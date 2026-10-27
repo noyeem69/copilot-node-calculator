@@ -204,5 +204,17 @@ describe('Arithmetic', function () {
                     done();
                 });
         });
+
+    });
+
+    describe('Power', function () {
+        it('returns one when the exponent is zero', function (done) {
+            request.get('/arithmetic?operation=power&operand1=42&operand2=0')
+                .expect(200)
+                .end(function (err, res) {
+                    expect(res.body).to.eql({ result: 1 });
+                    done();
+                });
+        });
     });
 });
