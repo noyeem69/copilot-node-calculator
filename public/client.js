@@ -33,6 +33,9 @@ function calculate(operand1, operand2, operation) {
         case '/':
             uri += "?operation=divide";
             break;
+        case '^':
+            uri += "?operation=power";
+            break;
         default:
             setError();
             return;
@@ -80,7 +83,7 @@ function numberPressed(n) {
         state = (n == '0' ? states.start : states.operand1);
     } else if (state == states.operator) {
         value = n;
-        state = (n == '0' ? states.operator : states.operand2);
+        state = states.operand2;
     } else if (value.replace(/[-\.]/g, '').length < 8) {
         value += n;
     }
